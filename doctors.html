@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctors — PulseCore Hospital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="logo">Pulse<span>Core</span> Hospital</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="departments.html">Departments</a>
+      <a href="doctors.html" class="active">Doctors</a>
+      <a href="packages.html">Packages</a>
+      <a href="contact.html">Contact</a>
+      <a href="appointment.html" class="nav-cta">Book an Appointment</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Meet Our Doctors</h1>
+    <p>Experienced specialists dedicated to your wellbeing.</p>
+    <p class="breadcrumb">Home / <span>Doctors</span></p>
+  </div>
+</section>
+
+<section class="doctors" id="doctors">
+  <div class="container">
+    <div class="doctor-filters">
+      <button class="filter-pill active" data-filter="all">All Doctors</button>
+      <button class="filter-pill" data-filter="Cardiology">Cardiology</button>
+      <button class="filter-pill" data-filter="Neurology">Neurology</button>
+      <button class="filter-pill" data-filter="Orthopedics">Orthopedics</button>
+      <button class="filter-pill" data-filter="Gynecology">Gynecology</button>
+      <button class="filter-pill" data-filter="Pediatrics">Pediatrics</button>
+      <button class="filter-pill" data-filter="General Medicine">General Medicine</button>
+    </div>
+
+    <div class="doctors-grid">
+      <div class="doctor-card" data-department="Cardiology">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" alt="Dr. Ananya Sharma">
+        <h3>Dr. Ananya Sharma</h3>
+        <p class="doctor-role">Chief Cardiologist</p>
+        <p>15+ years of experience in interventional cardiology.</p>
+        <p class="doctor-meta">📞 +91 98765 43211</p>
+        <p class="doctor-meta">Mon, Wed, Fri · 10:00 AM – 1:00 PM</p>
+      </div>
+      <div class="doctor-card" data-department="Neurology">
+        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80" alt="Dr. Rohit Verma">
+        <h3>Dr. Rohit Verma</h3>
+        <p class="doctor-role">Senior Neurologist</p>
+        <p>Specialist in stroke management and epilepsy care.</p>
+        <p class="doctor-meta">📞 +91 98765 43212</p>
+        <p class="doctor-meta">Tue, Thu, Sat · 11:00 AM – 2:00 PM</p>
+      </div>
+      <div class="doctor-card" data-department="Gynecology">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="Dr. Priya Nair">
+        <h3>Dr. Priya Nair</h3>
+        <p class="doctor-role">Gynecologist</p>
+        <p>Compassionate care for women at every stage of life.</p>
+        <p class="doctor-meta">📞 +91 98765 43213</p>
+        <p class="doctor-meta">Mon, Tue, Thu · 2:00 PM – 5:00 PM</p>
+      </div>
+      <div class="doctor-card" data-department="Orthopedics">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Dr. Arjun Mehta">
+        <h3>Dr. Arjun Mehta</h3>
+        <p class="doctor-role">Orthopedic Surgeon</p>
+        <p>Expert in joint replacement and sports injuries.</p>
+        <p class="doctor-meta">📞 +91 98765 43214</p>
+        <p class="doctor-meta">Mon–Sat · 9:00 AM – 12:00 PM</p>
+      </div>
+      <div class="doctor-card" data-department="Pediatrics">
+        <img src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?w=400&q=80" alt="Dr. Meera Iyer">
+        <h3>Dr. Meera Iyer</h3>
+        <p class="doctor-role">Pediatrician</p>
+        <p>Dedicated to gentle, thorough care for children of all ages.</p>
+        <p class="doctor-meta">📞 +91 98765 43215</p>
+        <p class="doctor-meta">Mon–Sat · 4:00 PM – 7:00 PM</p>
+      </div>
+      <div class="doctor-card" data-department="General Medicine">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80" alt="Dr. Sanjay Kapoor">
+        <h3>Dr. Sanjay Kapoor</h3>
+        <p class="doctor-role">General Physician</p>
+        <p>Trusted first point of contact for everyday health concerns.</p>
+        <p class="doctor-meta">📞 +91 98765 43216</p>
+        <p class="doctor-meta">All Days · 9:00 AM – 8:00 PM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <h3>Pulse<span>Core</span> Hospital</h3>
+      <p>Trusted multispecialty healthcare for you and your family.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About</a>
+      <a href="departments.html">Departments</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointment.html">Book Appointment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>+91 98765 43210</p>
+       <p>Suusri AI</p>
+      <p>care@pulsecorehospital.com</p>
+      <p>Bhubaneswar, Odisha, India</p>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 PulseCore Hospital. All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">💬</a>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
