@@ -144,70 +144,128 @@ const dutyRoster = {
 if (form) {
   const confirmationCard = document.getElementById("confirmationCard");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let isValid = true;
+  form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const name = document.getElementById("name");
-    const phone = document.getElementById("phone");
-    const department = document.getElementById("department");
-    const date = document.getElementById("date");
+  let isValid = true;
 
-    const nameError = document.getElementById("nameError");
-    const phoneError = document.getElementById("phoneError");
-    const deptError = document.getElementById("deptError");
-    const dateError = document.getElementById("dateError");
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const department = document.getElementById("department");
+const date = document.getElementById("date");
 
-    [nameError, phoneError, deptError, dateError].forEach((el) => (el.textContent = ""));
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+  const deptError = document.getElementById("deptError");
+  const dateError = document.getElementById("dateError");
 
-    if (name.value.trim().length < 3) {
-      nameError.textContent = "Please enter your full name.";
-      isValid = false;
+  [nameError, emailError, phoneError, deptError, dateError].forEach(
+  (el) => (el.textContent = "")
+);
+
+  if (name.value.trim().length < 3) {
+    nameError.textContent = "Please enter your full name.";
+    isValid = false;
+  }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email.value.trim())) {
+  emailError.textContent = "Enter a valid email address.";
+  isValid = false;
+}
+
+  const phonePattern = /^[0-9]{10}$/;
+
+  if (!phonePattern.test(phone.value.trim())) {
+    phoneError.textContent = "Enter a valid 10-digit phone number.";
+    isValid = false;
+  }
+
+  if (department.value === "") {
+    deptError.textContent = "Please select a department.";
+    isValid = false;
+  }
+
+  if (date.value === "") {
+    dateError.textContent = "Please choose a preferred date.";
+    isValid = false;
+  }
+
+  if (!isValid) return;
+
+  try {
+    const response = await fetch("http://localhost:5000/api/appointments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+       name: name.value.trim(),
+       email: email.value.trim(),
+       phone: phone.value.trim(),
+       department: department.value,
+       date: date.value
+})
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Appointment submission failed.");
     }
 
-    const phonePattern = /^[0-9]{10}$/;
-    if (!phonePattern.test(phone.value.trim())) {
-      phoneError.textContent = "Enter a valid 10-digit phone number.";
-      isValid = false;
-    }
-
-    if (department.value === "") {
-      deptError.textContent = "Please select a department.";
-      isValid = false;
-    }
-
-    if (date.value === "") {
-      dateError.textContent = "Please choose a preferred date.";
-      isValid = false;
-    }
-
-    if (!isValid) return;
-
-    // format the date nicely, e.g. "Saturday, September 12, 2026"
+    // Format date for the confirmation card
     const [year, month, day] = date.value.split("-").map(Number);
-    const prettyDate = new Date(year, month - 1, day).toLocaleDateString("en-US", {
+
+    const prettyDate = new Date(
+      year,
+      month - 1,
+      day
+    ).toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",
       month: "long",
-      day: "numeric",
+      day: "numeric"
     });
 
     const roster = dutyRoster[department.value];
 
-    document.getElementById("confirmName").textContent = name.value.trim();
-    document.getElementById("confirmDate").textContent = prettyDate;
-    document.getElementById("confirmDept").textContent = department.value;
-    document.getElementById("confirmDoctor").textContent = roster.doctor;
-    document.getElementById("confirmSchedule").textContent = roster.schedule;
+    document.getElementById("confirmName").textContent =
+      name.value.trim();
+
+    document.getElementById("confirmDate").textContent =
+      prettyDate;
+
+    document.getElementById("confirmDept").textContent =
+      department.value;
+
+    document.getElementById("confirmDoctor").textContent =
+      roster.doctor;
+
+    document.getElementById("confirmSchedule").textContent =
+      roster.schedule;
 
     form.hidden = true;
     confirmationCard.hidden = false;
 
     if (typeof gsap !== "undefined") {
-      gsap.from(confirmationCard, { opacity: 0, y: 16, duration: 0.5 });
+      gsap.from(confirmationCard, {
+        opacity: 0,
+        y: 16,
+        duration: 0.5
+      });
     }
-  });
 
+  } catch (error) {
+    console.error("Appointment submission error:", error);
+
+    alert(
+      "We could not submit your appointment right now. Please try again."
+    );
+  }
+});
   const bookAnotherBtn = document.getElementById("bookAnotherBtn");
   if (bookAnotherBtn) {
     bookAnotherBtn.addEventListener("click", () => {
