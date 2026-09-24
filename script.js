@@ -196,7 +196,8 @@ if (!emailPattern.test(email.value.trim())) {
   if (!isValid) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/appointments", {
+    const response = await fetch(
+  "https://pulse-core-healthcare-2r2v.vercel.app/api/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
